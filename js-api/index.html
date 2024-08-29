@@ -3,10 +3,10 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>WebAssembly JavaScript Interface</title>
-  <meta content="ED" name="w3c-status">
+  <meta content="CRD" name="w3c-status">
   <meta content="Bikeshed version 6270e4735, updated Tue Aug 6 12:12:30 2024 -0700" name="generator">
   <link href="https://www.w3.org/TR/wasm-js-api-2/" rel="canonical">
-  <meta content="fd68d2ebadcced4aef014b6cc9998c74a4d28e85" name="revision">
+  <meta content="05b6ab981e2e0e9215cc0863416f7776f1791892" name="revision">
   <meta content="dark light" name="color-scheme">
 <style>
 emu-const {
@@ -737,21 +737,25 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
 	var[data-var-color="6"] { --var-vg: #ff0000; }
 }
 </style>
-  <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-CRD" rel="stylesheet">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebAssembly JavaScript Interface</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-08-29">29 August 2024</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#CRD">W3C Candidate Recommendation Draft</a>, <time class="dt-updated" datetime="2024-08-29">29 August 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://webassembly.github.io/spec/js-api/">https://webassembly.github.io/spec/js-api/</a>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2024/CRD-wasm-js-api-2-20240829/">https://www.w3.org/TR/2024/CRD-wasm-js-api-2-20240829/</a>
       <dt>Latest published version:
       <dd><a href="https://www.w3.org/TR/wasm-js-api-2/">https://www.w3.org/TR/wasm-js-api-2/</a>
+      <dt>Editor's Draft:
+      <dd><a href="https://webassembly.github.io/spec/js-api/">https://webassembly.github.io/spec/js-api/</a>
+      <dt>History:
+      <dd><a class="u-url" href="https://www.w3.org/standards/history/wasm-js-api-2/">https://www.w3.org/standards/history/wasm-js-api-2/</a>
       <dt>Implementation Report:
       <dd><a href="https://webassembly.org/features/">https://webassembly.org/features/</a>
       <dt>Feedback:
@@ -778,19 +782,18 @@ and the <a href="https://www.w3.org/TR/wasm-web-api/">WebAssembly Web API</a>.
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
-   <p> This is a public copy of the editors’ draft.
-	It is provided for discussion only and may change at any moment.
-	Its publication here does not imply endorsement of its contents by W3C.
-	Don’t cite this document other than as work in progress. </p>
+   <p><em>This section describes the status of this document at the time of
+   its publication. A list of
+   current W3C publications and the latest revision of this technical report
+   can be found in the <a href="https://www.w3.org/TR/">W3C technical reports
+   index at https://www.w3.org/TR/.</a></em> </p>
+   <p>This document was published by the <a href="https://www.w3.org/groups/wg/wasm/">WebAssembly Working Group</a> as a Candidate Recommendation Draft using the <a href="https://www.w3.org/policies/process/20231103/#recs-and-notes">Recommendation track</a>.</p>
+   <p>Publication as a Candidate Recommendation does not imply endorsement by W3C and its Members. A Candidate Recommendation Draft integrates changes from the previous Candidate Recommendation that the Working Group intends to include in a subsequent Candidate Recommendation Snapshot.</p>
    <p> <a href="https://github.com/WebAssembly/spec/issues">GitHub Issues</a> are preferred for discussion of this specification.
-  All issues and comments are <a href="https://github.com/WebAssembly/spec/issues?utf8=%E2%9C%93&amp;q=is%3Aissue++">archived</a>. </p>
-   <p> This document was produced by the <a href="https://www.w3.org/groups/wg/wasm">WebAssembly Working Group</a>. </p>
-   <p> This document was produced by a group operating under
-	the <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/">W3C Patent Policy</a>.
-	W3C maintains a <a href="https://www.w3.org/2004/01/pp-impl/101196/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
-	that page also includes instructions for disclosing a patent.
-	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/policies/process/20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
+    All issues and comments are <a href="https://github.com/WebAssembly/spec/issues?utf8=%E2%9C%93&amp;q=is%3Aissue++">archived</a>. </p>
+   <p>This document is maintained and updated at any time. Some parts of this document are work in progress.</p>
+   <p>This document was produced by a group operating under the <a href="https://www.w3.org/policies/patent-policy/">W3C Patent Policy</a>. W3C maintains a <a href="https://www.w3.org/groups/wg/wasm/ipr" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the W3C Patent Policy</a>.</p>
+   <p>This document is governed by the <a href="https://www.w3.org/policies/process/20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>.</p>
    <p></p>
   </div>
   <div data-fill-with="at-risk"></div>
