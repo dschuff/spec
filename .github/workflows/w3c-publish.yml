@@ -47,14 +47,14 @@ jobs:
       - name: Setup Bikeshed
         run: pip install bikeshed && bikeshed update
       - name: Setup TexLive
-        if: ${{ matrix.spec }} == "core"
+        if: ${{ matrix.spec == 'core' }}
         run: sudo apt-get update -y && sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
       - name: Setup Sphinx
-        if: ${{ matrix.spec }} == "core"
+        if: ${{ matrix.spec == 'core' }}
         run: pip install six && pip install sphinx==5.1.0
       - name: Publish all specs to their https://www.w3.org/TR/ URLs
         if: env.W3C_ECHIDNA_TOKEN_CORE
-        run: cd document && make -e -c ${{ matrix.spec }} WD-echidna-CI
+        run: cd document && make -e -C ${{ matrix.spec }} WD-echidna-CI
         env:
           W3C_ECHIDNA_TOKEN_CORE: ${{ secrets.W3C_ECHIDNA_TOKEN_CORE }}
           W3C_ECHIDNA_TOKEN_JSAPI: ${{ secrets.W3C_ECHIDNA_TOKEN_JSAPI }}
@@ -62,7 +62,7 @@ jobs:
           ECHIDNA_DRYRUN: ${{ !(github.event_name == 'push' && github.repository == 'WebAssembly/spec' && github.ref == 'refs/heads/main') }}
       - name: Validate all specs with Echidna
         if: env.W3C_USERNAME
-        run: cd document && make -e -c ${{ matrix.spec }} WD-echidna
+        run: cd document && make -e -C ${{ matrix.spec }} WD-echidna
         env:
           W3C_USERNAME: ${{ secrets.W3C_USERNAME }}
           W3C_PASSWORD: ${{ secrets.W3C_PASSWORD }}
